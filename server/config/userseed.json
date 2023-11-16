@@ -1,0 +1,34 @@
+[
+    {
+        "username": "GhostDad",
+        "email": "GhostDad@testmail.com",
+        "password": "Password12345",
+        "description": "Hi, Im GHOSTDAD the most normal user",
+        "postCount": "2",
+        "activated": "true"
+    },
+    {
+        "username": "Miho",
+        "email": "Miho@testmail.com",
+        "password": "Password12345",
+        "description": "Hi, Im Miho the least normal user",
+        "postCount": "1",
+        "activated": "true"
+    },
+    {
+        "username": "Michaela",
+        "email": "Michaela@testmail.com",
+        "password": "Password12345",
+        "description": "Hi, Im Michaela the wife of GHOSTDAD",
+        "postCount": "1",
+        "activated": "true"
+    },
+    {
+        "username": "Flora",
+        "email": "Flora@testmail.com",
+        "password": "Password12345",
+        "description": "Hi, Im Flora the baby of GHOSTDAD",
+        "postCount": "1",
+        "activated": "true"
+    }
+]
