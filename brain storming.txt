@@ -1,0 +1,36 @@
+Message board typew app?
+Something like SA, Twitter, or reddit?
+forums style layout
+icon in the tab is moss??
+moss based site?
+login system
+something to hold images to rednder on the page
+uploading images
+email authentication feature npm smpt library nodemailer
+forgot password feature
+
+**for followers cronjob to following every 2-3mins to check and populate followers table base on followers
+
+
+DATABASE would have something like 
+Tables:
+Users (name, Reg Date, Post count(?), password, email, friends/followers(?), [Posts], [comment/reply])
+Forum?: Topics, last active post, post/thread count?,
+Post/thread?: (Content, Post Date, Title(?),  ), 
+media library?: name, location?
+
+
+PAGES:s
+Home page
+register/signin (redirect here?)
+single post +  replies page
+settings?
+user dashboard
+timeline?
+
+
+
+Comment/reply?:
+
+
+Not sure what APIs to use?
