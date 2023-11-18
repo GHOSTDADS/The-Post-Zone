@@ -18,6 +18,7 @@ const typeDefs = `
         userId: String
         body: String
         likes: [ID]
+        username: String
         createdAt: String
         updatedAt: String
     }

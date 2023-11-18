@@ -49,6 +49,7 @@ export const CREATE_POST = gql`
             body
             createdAt
             userId
+            username
         }
     }
 `;

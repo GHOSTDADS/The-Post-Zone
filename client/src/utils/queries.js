@@ -7,6 +7,7 @@ query Posts {
     body
     createdAt
     userId
+    username
   }
 } 
 `;
@@ -15,6 +16,7 @@ export const QUERY_USER_POSTS = gql`
 query PostsbyUser($userId: ID) {
     postsbyUser(userId: $userId) {
       userId
+      username
       body
       _id
       likes

@@ -39,6 +39,13 @@ class AuthService {
         const decoded = decode(token);
         return decoded.data._id;
     }
+
+
+    getUsername() {
+        const token = localStorage.getItem('id_token');
+        const decoded = decode(token);
+        return decoded.data.username;
+    }
 }
 
 export default new AuthService();

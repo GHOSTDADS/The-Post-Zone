@@ -9,7 +9,7 @@ function Login() {
   const isLoggedIn = Auth.loggedIn();
   if (isLoggedIn) {
       return (
-          <Navigate to="/" replace={true} />
+          <Navigate to="/feed" replace={true} />
       )
   }
 

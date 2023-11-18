@@ -5,8 +5,9 @@ import App from './App.jsx';
 import ErrorPage from './pages/ErrorPage';
 import Splash from './pages/Homepage';
 import Login from './pages/Login';
-import Register from './pages/Register'
+import Register from './pages/Register';
 import Feed from './pages/Feed.jsx';
+import Profile from './pages/Profile.jsx';
 
 const router = createBrowserRouter([
     {
@@ -26,10 +27,10 @@ const router = createBrowserRouter([
                 path: '/signup',
                 element: <Register />
             },
-            // {
-            //     path: '/user/:username',
-            //     element: <Profile />
-            // },
+            {
+                path: '/user/:userId',
+                element: <Profile/>
+            },
             {
                 path: '/feed',
                 element: <Feed />

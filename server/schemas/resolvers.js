@@ -15,7 +15,7 @@ const resolvers = {
         },
         //post queries
         posts: async () => {
-            return await Post.find({});
+            return await Post.find({}).sort({ createdAt: -1 });
         },
         post: async (parent, { _id }) => {
             return await Post.findMany({ _id });
@@ -24,7 +24,7 @@ const resolvers = {
             return await Post.find({ 'userId': {
                 $in: userId
             }
-        });
+        }).sort({ createdAt: -1 });
         },
         //mediaLibrary queries
         mediaLibrarys: async () => {
@@ -112,9 +112,11 @@ const resolvers = {
 
         //creates new post taking in a body and uses logged in users token to update users post count
         createPost: async (parent, { body }, context) => {
+            console.log("hello user", context.user);
             if (context.user) {
-                const post =  await Post.create({ 
+                const post = await Post.create({ 
                     userId: context.user._id, 
+                    username: context.user.username,
                     body 
                 });
                 await User.findByIdAndUpdate(

@@ -12,7 +12,7 @@ function Register() {
     console.log(isLoggedIn);
     if (isLoggedIn) {
         return (
-            <Navigate to="/" replace={true} />
+            <Navigate to="/feed" replace={true} />
         )
     }
 

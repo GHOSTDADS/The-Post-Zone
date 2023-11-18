@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom";
 
 const styles = {
     cardStyle: {
@@ -17,7 +18,8 @@ const Posts = ({posts}) => {
                 <div className="media-content">
                     <div className="content">
                         <p>
-                            <strong>{post.userId}</strong><small>{post.createdAt}</small>
+                            <Link to={`/user/${post.userId}`}><strong>{post.username}</strong></Link><small>{post.createdAt}</small>
+                            <Link to={`/user/${post.userId}`} >{post.userId}</Link>
                             {post.body}
                         </p>
                     </div>
