@@ -1,12 +1,13 @@
 import  Auth  from '../utils/auth';
 import { Navigate } from 'react-router-dom';
-import Mainfeed from '../components/MainFeed';
+import PostList from '../components/PostList';
+
 
 const Feed = () => {
 
  return (
     <div>
-        <Mainfeed />
+        <PostList />
     </div>
  )
 }
