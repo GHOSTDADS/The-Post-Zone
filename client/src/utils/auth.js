@@ -33,6 +33,12 @@ class AuthService {
         localStorage.removeItem('id_token');
         window.location.assign('/');
     }
+
+    getUser() {
+        const token = localStorage.getItem('id_token');
+        const decoded = decode(token);
+        return decoded.data._id;
+    }
 }
 
 export default new AuthService();
