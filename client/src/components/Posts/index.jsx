@@ -8,17 +8,17 @@ const styles = {
     }
  };
 
-const Posts = ({userPosts}) => {
+const Posts = ({posts}) => {
 
     return (
         <>
-        {userPosts.map((userPost) => (
-            <div key={userPost._id} className="media" style={styles.cardStyle} >
+        {posts.map((post) => (
+            <div key={post._id} className="media" style={styles.cardStyle} >
                 <div className="media-content">
                     <div className="content">
                         <p>
-                            <strong>{userPost.userId}</strong><small>{userPost.createdAt}</small>
-                            {userPost.body}
+                            <strong>{post.userId}</strong><small>{post.createdAt}</small>
+                            {post.body}
                         </p>
                     </div>
                 </div>

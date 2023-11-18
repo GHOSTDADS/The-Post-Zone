@@ -41,3 +41,14 @@ export const UNFOLLOW_USER = gql`
         }
     }
 `;
+
+export const CREATE_POST = gql`
+    mutation CreatePost($body: String!) {
+        createPost(body: $body) {
+            _id
+            body
+            createdAt
+            userId
+        }
+    }
+`;

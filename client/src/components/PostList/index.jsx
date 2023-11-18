@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { QUERY_USER_POSTS } from '../../utils/queries';
+import { QUERY_ALL_POSTS } from '../../utils/queries';
 import Auth from '../../utils/auth';
 import { Navigate } from 'react-router-dom';
 import Posts from "../Posts";
@@ -7,11 +7,9 @@ import Posts from "../Posts";
 
 const PostList = () => {
 
-    const userId = Auth.getUser();
-    const { loading, data } = useQuery(QUERY_USER_POSTS, {variables: { userId: userId }});
-    const userPosts = data?.postsbyUser;
-
-    console.log("userPosts", userPosts);
+    const { loading, data } = useQuery(QUERY_ALL_POSTS);
+    const allPosts = data?.posts;
+    
     const isLoggedIn = Auth.loggedIn();
     if(!isLoggedIn){
         return (
@@ -24,8 +22,8 @@ const PostList = () => {
     return (
 
         <>
-        <div className="title is-2">{userId} Post</div>
-        {loading ? <div> lording </div> : <Posts userPosts={userPosts} />}
+        <div className="title is-2"> Posts</div>
+        {loading ? <div> lording </div> : <Posts posts={allPosts} />}
 
         </>
 

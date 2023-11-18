@@ -33,7 +33,7 @@ function Register() {
             const token = mutationResponse.data.createUser.token;
             Auth.login(token);
         } catch (e) {
-            console.log(e);
+            console.error(e);
         }
     };
 

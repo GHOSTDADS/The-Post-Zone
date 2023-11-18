@@ -1,16 +1,15 @@
 import { gql } from '@apollo/client';
 
-// export const QUERY_ALL_POSTS = gql`
-//     query Query {
-//         posts {
-//             userId
-//             body
-//             _id
-//             likes
-//             createdAt
-//         }
-//     }   
-// `;
+export const QUERY_ALL_POSTS = gql`
+query Posts {
+  posts {
+    _id
+    body
+    createdAt
+    userId
+  }
+} 
+`;
 
 export const QUERY_USER_POSTS = gql`
 query PostsbyUser($userId: ID) {
