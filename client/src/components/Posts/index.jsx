@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom";
+import ModalTime from "../LogInModal";
 
 const styles = {
     cardStyle: {
@@ -13,6 +14,7 @@ const Posts = ({posts}) => {
 
     return (
         <>
+        <ModalTime />
         {posts.map((post) => (
             <div key={post._id} className="media" style={styles.cardStyle} >
                 <div className="media-content">
