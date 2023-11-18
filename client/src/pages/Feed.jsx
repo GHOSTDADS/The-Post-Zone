@@ -1,5 +1,3 @@
-import  Auth  from '../utils/auth';
-import { Navigate } from 'react-router-dom';
 import PostList from '../components/PostList';
 
 

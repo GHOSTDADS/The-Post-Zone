@@ -24,7 +24,7 @@ const PostList = () => {
     return (
 
         <>
-        <div>Timeline Post</div>
+        <div className="title is-2">{userId} Post</div>
         {loading ? <div> lording </div> : <Posts userPosts={userPosts} />}
 
         </>
