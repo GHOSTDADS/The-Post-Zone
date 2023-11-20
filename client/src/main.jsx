@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App.jsx';
 import ErrorPage from './pages/ErrorPage';
-import Splash from './pages/Homepage';
+import Splash from './pages/Splash';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Feed from './pages/Feed.jsx';

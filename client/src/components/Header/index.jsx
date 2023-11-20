@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import './Header.css';
+import { Link, useLocation } from 'react-router-dom';
 import  Auth  from '../../utils/auth';
 
 const Header = () => {
@@ -7,34 +8,39 @@ const Header = () => {
       Auth.logout();
     };
 
+    const location = useLocation();
+
     return (
 
-            <nav className='navbar' role='navigation' aria-label='main navigation'>
+            <nav id='mobileShift' className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
-                <div className='title is-3'>The Post Zone</div>
+                <Link className='pt-2' to='/'>
+                    <img src="../../../assets/PostZoneIcon.png" alt="" />
+                </Link>
             </div>
             <div className='navbar-end'>
                 <div className='navbar-item'>
-                    <div className='buttons'>
-                        {Auth.loggedIn() ? (
+                    <div id='mobileNavItems' className='buttons has-addons'>
+                        {Auth.loggedIn() ? 
                             <>
-                            <Link className='button is-primary'>
+                            <Link className='button is-primary' >
                                 Profile
                             </Link>
-                            <Link className='button is-danger' onClick={logout}>
+                            <button className='button is-link' onClick={logout}>
                                 Log Out
-                            </Link>
+                            </button>
                             </>
-                        ) : ( 
+                         : <>
+                            {location.pathname == '/feed' ? <div></div> :
                             <>
                             <Link className='button is-primary' to='/signup'>
                                 Sign Up!
                             </Link>
-                            <Link className='button is-light' to='/login'>
+                            <Link className='button is-link' to='/login'>
                                 Log In!
                             </Link>
                             </>
-                        )}  
+                        }</>}
                     </div>
                 </div>
             </div>

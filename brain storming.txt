@@ -28,6 +28,8 @@ settings?
 user dashboard
 timeline?
 
+centerModal when in mobile viewport
+
 
 
 Comment/reply?:

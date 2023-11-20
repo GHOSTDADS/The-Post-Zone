@@ -33,10 +33,11 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
 function App() {
   return (
     <ApolloProvider client={client}>
-        <div className="container">
+        <div id='backgroundMain' className="container">
           <Header />
           <div className='divider'></div>
           <Outlet />

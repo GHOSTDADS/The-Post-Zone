@@ -2,24 +2,41 @@ import React from "react";
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import {CREATE_POST} from '../../utils/mutations';
-import { QUERY_ALL_POSTS } from "../../utils/queries";
+import { QUERY_ALL_POSTS, QUERY_USER_POSTS } from "../../utils/queries";
+import { useLocation, useParams } from "react-router-dom";
 
 const NewPost = () => {
 
+    const userId = useParams()
+    const location = useLocation();
     const [formState, setFormState] = useState({ body: '' });
     const [createPost, { error }] = useMutation(CREATE_POST, {
         update(cache, { data: { createPost } }) {
-          try {
-            const { posts } = cache.readQuery({ query: QUERY_ALL_POSTS });
-            console.log('posts', posts);
-
-            cache.writeQuery({
-              query: QUERY_ALL_POSTS,
-              data: { posts: [createPost, ...posts] },
-            });
-          } catch (e) {
-            console.error(e);
-          }
+            if(location.pathname == '/feed'){
+                try {
+                    const { posts } = cache.readQuery({ query: QUERY_ALL_POSTS } );
+        
+                    cache.writeQuery({
+                      query: QUERY_ALL_POSTS,
+                      data: { posts: [createPost, ...posts] },
+                    });
+                  } catch (e) {
+                    console.error(e);
+                  }
+            } else {
+                try {
+                    const { postsbyUser } = cache.readQuery({ query: QUERY_USER_POSTS,  variables: { userId: userId.userId, }, });
+        
+                    console.log('user posts', postsbyUser);
+                    cache.writeQuery({
+                      query: QUERY_USER_POSTS,
+                      data: { postsbyUser: [createPost, ...postsbyUser] },
+                    });
+                  } catch (e) {
+                    console.error(e);
+                  }
+            }
+          
         },});
 
     const handleFormSubmit = async (event) => {
@@ -49,9 +66,9 @@ const NewPost = () => {
         <>
             <form className="box mt-5" onSubmit={handleFormSubmit}>
                 <div className="field has-text-centered is-offset-2 column is-8">
-                    <label className="label">Post here!</label>
+                    <label className="label is-medium">Something on your mind?</label>
                     <div className="control">
-                        <input className="input is-medium" name='body' type="text" placeholder="Body" id="username" value={formState.body} onChange={handleChange} />
+                        <input className="input is-medium" name='body' type="text" placeholder="Write a new post here" id="username" value={formState.body} onChange={handleChange} />
                     </div>
                 </div>
                 <div className="field has-text-centered is-offset-2 column is-8">

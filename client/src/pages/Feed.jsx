@@ -1,8 +1,7 @@
 import PostList from '../components/PostList';
 import NewPost from '../components/NewPost';
-import LogInSignUp from '../components/LoginSignup';
 import Auth from '../utils/auth';
-import ModalTime from '../components/LogInModal';
+import LogInModal from '../components/LogInModal';
 
 const Feed = () => {
     const loggedIn = Auth.loggedIn();
@@ -10,11 +9,10 @@ const Feed = () => {
  return (
     <div>
         {loggedIn ? <NewPost /> : <div></div>}
+        <div className="title is-2 has-text-centered">All Posts in the Zone</div>
         <PostList />
-        {loggedIn ? <div></div> : <LogInSignUp />}
-        <ModalTime />
+        {loggedIn ? <div></div> : <LogInModal />}
     </div>
-
  )
 }
 

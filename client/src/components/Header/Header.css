@@ -1,0 +1,16 @@
+.navbar {
+    background-color: #FFFFCC;
+}
+
+@media (max-width: 767px) {
+    #mobileShift{
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+    }
+    #mobileNavItems{
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+    }
+}

@@ -19,7 +19,6 @@ query PostsbyUser($userId: ID) {
       username
       body
       _id
-      likes
       createdAt
     }
   }

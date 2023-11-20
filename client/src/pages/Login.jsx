@@ -45,7 +45,7 @@ function Login() {
   return (
           <div className="column is-three-quarters is-offset-2">
               <form className="box" onSubmit={handleFormSubmit}>
-                <div className='title is-1 has-text-centered'>Log in friend~</div> 
+                <div id='logInTitle' className='title is-1 has-text-centered'>Log in friend</div> 
 
               <div className="field has-text-centered is-offset-2 column is-8">
                   <label className="label">Username</label>
@@ -67,7 +67,7 @@ function Login() {
               </div> 
               {error ? (
               <div>
-                  <p className="error-text has-text-centered">The provided credentials are incorrect</p>
+                  <p className="error-text has-text-centered">{error}</p>
               </div>
               ) : null}
               </form>

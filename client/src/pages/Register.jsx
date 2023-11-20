@@ -48,7 +48,7 @@ function Register() {
     return (
         <div className="column is-three-quarters is-offset-2">
             <form className="box mt-5" onSubmit={handleFormSubmit}>
-                <div className='title is-1 has-text-centered'> Sign up Here!</div>
+                <div id='signupTitle' className='title is-1 has-text-centered'> Sign up Here!</div>
                 <div className="field has-text-centered is-offset-2 column is-8">
                     <label className="label">Username</label>
                     <div className="control">

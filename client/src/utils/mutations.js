@@ -53,3 +53,13 @@ export const CREATE_POST = gql`
         }
     }
 `;
+
+export const EDIT_POST = gql`
+mutation UpdatePost($id: ID!, $body: String!) {
+    updatePost(_id: $id, body: $body) {
+      userId
+      body
+      _id
+    }
+  }
+`;

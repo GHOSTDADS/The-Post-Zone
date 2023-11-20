@@ -1,1 +1,30 @@
 @import "@creativebulma/bulma-divider";
+
+#root {
+    background-color: #FFFFCC;
+}
+
+@media (max-width: 767px) {
+    #mobileDisable{
+        display:none;
+    }
+    #email {
+        font-size: 1rem;
+    }
+    #username {
+        font-size: 1rem;  
+    }
+    #password {
+        font-size: 1rem;  
+    }
+    #signupTitle {
+        font-size: 2rem; 
+    }
+    #logInTitle {
+        font-size: 2rem; 
+    }   
+}
+
+.hero {
+    border-radius: 10px;
+}
