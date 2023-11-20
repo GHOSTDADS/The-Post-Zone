@@ -17,7 +17,6 @@ const Profile = () => {
     const userPosts = data?.postsbyUser;
 
     useEffect(() => {
-        console.log('im triggered');
         if (Auth.loggedIn()) {
             setLoggedIn(Auth.getUser());
         }

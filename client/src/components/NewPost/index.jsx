@@ -3,11 +3,12 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import {CREATE_POST} from '../../utils/mutations';
 import { QUERY_ALL_POSTS, QUERY_USER_POSTS } from "../../utils/queries";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import Auth from "../../utils/auth";
 
 const NewPost = () => {
 
-    const userId = useParams()
+    const userId = Auth.getUser();
     const location = useLocation();
     const [formState, setFormState] = useState({ body: '' });
     const [createPost, { error }] = useMutation(CREATE_POST, {
@@ -25,11 +26,13 @@ const NewPost = () => {
                   }
             } else {
                 try {
-                    const { postsbyUser } = cache.readQuery({ query: QUERY_USER_POSTS,  variables: { userId: userId.userId, }, });
+                    const { postsbyUser } = cache.readQuery({ query: QUERY_USER_POSTS,  variables: { userId: userId } });
         
                     console.log('user posts', postsbyUser);
+                    console.log('create post', createPost);
                     cache.writeQuery({
                       query: QUERY_USER_POSTS,
+                      variables: { userId: userId },
                       data: { postsbyUser: [createPost, ...postsbyUser] },
                     });
                   } catch (e) {
