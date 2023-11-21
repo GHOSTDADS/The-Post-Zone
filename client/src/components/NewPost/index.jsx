@@ -28,8 +28,6 @@ const NewPost = () => {
                 try {
                     const { postsbyUser } = cache.readQuery({ query: QUERY_USER_POSTS,  variables: { userId: userId } });
         
-                    console.log('user posts', postsbyUser);
-                    console.log('create post', createPost);
                     cache.writeQuery({
                       query: QUERY_USER_POSTS,
                       variables: { userId: userId },

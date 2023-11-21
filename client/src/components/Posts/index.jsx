@@ -6,6 +6,7 @@ import { useState } from 'react';
 import EditModal from "../editPostModal";
 import Auth from "../../utils/auth";
 import LikeButton from "../LikeButton";
+import DeleteButton from "./deleteButton";
 import './Posts.css'
 
 const Posts = ({ posts }) => {
@@ -46,17 +47,18 @@ const Posts = ({ posts }) => {
                         </div>
                     </div>
                     {location.pathname == '/feed' ? <div></div> : <div> {loggedUserId == post.userId ? <div className="media-right">
-                        <div>
+                        <div className='buttons has-addons'>
                             <button type="button" data-id={post._id} className="button is-warning mt-4" onClick={() => {
                                 setOpen(true) 
                                 setModalData(post._id)
                                 setBody(post.body)
                             }}>Edit Post</button>
+                            <DeleteButton postId={post._id}/>
                         </div>
                     </div> : <></> }
                     </div>
                     }
-                    
+                 
                 </div>
             ))}
             <EditModal open={open} modalData={modalData} body={body}/>

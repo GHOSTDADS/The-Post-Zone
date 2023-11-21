@@ -12,10 +12,12 @@ const EditModal = (props) => {
 
     useEffect(() => {
         setOpen(props.open);
+        setFormState({ value: props.body });
     }, [props])
 
 
     const handleModalClick = () => {
+        setFormState({ value: '' });
         setOpen(!open)
     };
 
@@ -34,6 +36,7 @@ const EditModal = (props) => {
                 variables: { id: props.modalData, body: formState.value, },
             },
                 { returnNewDocument: true });
+            setFormState({ value: '' });
             setOpen(!open);
         } catch (e) {
             console.log(e);
@@ -52,7 +55,7 @@ const EditModal = (props) => {
                     </div>
                     <div className="field has-text-centered is-offset-2 column is-8">
                         <div className="control">
-                            <textarea key={`${props.modalData}`} className="textarea is-medium is-warning has-fixed-size" name='body' type="text" placeholder={`${props.body}`} id="body" onChange={handleChange} />
+                            <textarea key={`${props.modalData}`} className="textarea is-medium is-warning has-fixed-size" defaultValue={props.body} name='body' type="text"  id="body" onChange={handleChange} />
                         </div>
                     </div>
                     <div className="field has-text-centered is-offset-2 column is-8">
