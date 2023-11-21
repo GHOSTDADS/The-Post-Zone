@@ -1,5 +1,6 @@
 .navbar {
     background-color: #FFFFCC;
+    z-index: unset;
 }
 
 @media (max-width: 767px) {

@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import Auth from "../utils/auth";
 import { useEffect, useState } from "react";
 import NewPost from "../components/NewPost";
+import Footer from '../components/Footer';
 
 const Profile = () => {
     const { userId } = useParams();
@@ -38,6 +39,7 @@ const Profile = () => {
                     </section>
                     {userId == loggedUserId ? <NewPost /> : <div></div>}
                     {loading ? <div></div> : <div className="container is-fluid pb-7"><Posts posts={userPosts} /></div> } 
+                    {Auth.loggedIn() ? <div></div> : <Footer />}
                 </>}
         </div>
     )

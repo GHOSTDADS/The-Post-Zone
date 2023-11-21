@@ -1,0 +1,38 @@
+.footer {
+        position: fixed;
+        bottom: 0;
+        width: 70.7%;
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: hsl(100, 100%, 90%);
+}
+
+@media (max-width: 767px) {
+        .footer{
+                width: 100%;
+                height: 30%;
+        }
+        #mobileView {
+                font-size: 1.5rem;
+        }
+        #mobileView2 {
+                font-size: 1.8rem;
+        }
+
+    }
+
+.button.is-primary {
+        background-color: #FFCCCC;
+}
+
+.button.is-primary:hover {
+        background-color: #FF9999;
+}
+
+.button.is-link { 
+        background-color: #CCCCFF;
+}
+
+.button.is-link:hover { 
+        background-color: #9999CC;
+}

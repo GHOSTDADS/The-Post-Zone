@@ -43,7 +43,7 @@ const Posts = ({ posts }) => {
                             <p className="mt-2">
                                 {post.body}
                             </p>
-                            <small><LikeButton /></small>
+                            <small><LikeButton likeCount={post.likes} /></small>
                         </div>
                     </div>
                     {location.pathname == '/feed' ? <div></div> : <div> {loggedUserId == post.userId ? <div className="media-right">

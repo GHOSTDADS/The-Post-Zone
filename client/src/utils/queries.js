@@ -8,6 +8,7 @@ query Posts {
     createdAt
     userId
     username
+    likes
   }
 } 
 `;
@@ -20,6 +21,7 @@ query PostsbyUser($userId: ID) {
       body
       _id
       createdAt
+      likes
     }
   }
   `;

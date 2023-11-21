@@ -2,7 +2,6 @@ import './logInModal.css';
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../../utils/mutations';
-import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import React from 'react';
 
@@ -80,17 +79,9 @@ const LogInModal = () => {
                 </div>
             </div>
 
-            <footer className='footer'>
-                <div className='content has-text-centered'>
-                    <div id='mobileView' className='title is-2'>Welcome to the POST ZONE</div>
-                    <p>Feel free to browse but why not sign up or log in to contribute! </p>
-                    <div className='buttons is-centered'>
-                        <Link className='button is-primary' to='/signup' >Sign Up</Link>
-                        <button className='button is-link' onClick={handleModalClick} >Log In</button>
-                    </div>
-                </div>
-            </footer>
-            
+
+            <button className='button is-link' onClick={handleModalClick} >Log In</button>
+
         </>
     )
 }

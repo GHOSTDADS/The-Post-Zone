@@ -57,7 +57,8 @@ const typeDefs = `
         updateUser(username: String, email: String, password: String, description: String): User
         updatePost(_id: ID!, body: String!): Post
         removePost(_id: ID!): Post
-        
+        likePost(_id: ID!): Post
+        unLikePost(_id: ID!): Post
     }
 `;
 

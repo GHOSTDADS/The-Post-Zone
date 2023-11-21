@@ -1,10 +1,10 @@
-import  Auth  from '../utils/auth';
+import Auth from '../../utils/auth';
 import { Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
+import { ADD_USER } from '../../utils/mutations';
 
-function Register() {
+function SignUpModal() {
 
     //checks if logged in and redirects to feed
     const isLoggedIn = Auth.loggedIn();
@@ -15,13 +15,12 @@ function Register() {
         )
     }
 
-
+    const [isOpen, setIsOpen] = useState(false); 
     const [formState, setFormState] = useState({ username: '', password: '', email: '' });
     const [register, { error }] = useMutation(ADD_USER);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-            // setErrors(validation(values));
         try {
             const mutationResponse = await register({
                 variables: { username: formState.username, password: formState.password, email: formState.email },
@@ -42,9 +41,19 @@ function Register() {
         });
     };
 
+    const handleModalClick = () => {
+        setIsOpen(!isOpen)
+    };
+
+
+    const active = isOpen ? "is-active" : "";
+
     return (
-        <div className="column is-three-quarters is-offset-2">
+        <>
+        <div className={`modal ${active}`}>
+
             <form className="box mt-5" onSubmit={handleFormSubmit}>
+               <button type="button" className="delete" onClick={handleModalClick} aria-label="close"></button>
                 <div id='signupTitle' className='title is-1 has-text-centered'> Sign up Here!</div>
                 <div className="field has-text-centered is-offset-2 column is-8">
                     <label className="label">Username</label>
@@ -73,7 +82,10 @@ function Register() {
             </form>
         </div>
 
+<button className='button is-primary' onClick={handleModalClick} >Sign In</button>
+
+</>
     );
 };
 
-export default Register;
+export default SignUpModal;

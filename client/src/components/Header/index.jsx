@@ -23,7 +23,7 @@ const Header = () => {
                     <div id='mobileNavItems' className='buttons has-addons'>
                         {Auth.loggedIn() ? 
                             <>
-                            <Link className='button is-primary' >
+                            <Link className='button is-primary' to={`/user/${Auth.getUser()}`}>
                                 Profile
                             </Link>
                             <button className='button is-link' onClick={logout}>

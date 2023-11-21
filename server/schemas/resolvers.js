@@ -21,10 +21,11 @@ const resolvers = {
             return await Post.findMany({ _id });
         },
         postsbyUser: async (parent, { userId }) => {
-            return await Post.find({ 'userId': {
-                $in: userId
-            }
-        }).sort({ createdAt: -1 });
+            return await Post.find({
+                'userId': {
+                    $in: userId
+                }
+            }).sort({ createdAt: -1 });
         },
         //mediaLibrary queries
         mediaLibrarys: async () => {
@@ -37,7 +38,7 @@ const resolvers = {
     Mutation: {
         //user mutations
 
-        createUser: async (parent, { username, password, email}) => {
+        createUser: async (parent, { username, password, email }) => {
             const user = await User.create({ username, email, password });
             const token = signToken(user);
             return { token, user };
@@ -57,7 +58,7 @@ const resolvers = {
 
             const token = signToken(user);
 
-            return { token, user };       
+            return { token, user };
         },
         addFollowing: async (parent, { _id }, context) => {
             if (context.user) {
@@ -114,18 +115,18 @@ const resolvers = {
         createPost: async (parent, { body }, context) => {
             console.log("hello user", context.user);
             if (context.user) {
-                const post = await Post.create({ 
-                    userId: context.user._id, 
+                const post = await Post.create({
+                    userId: context.user._id,
                     username: context.user.username,
-                    body 
+                    body
                 });
                 await User.findByIdAndUpdate(
-                    { _id: context.user._id},
+                    { _id: context.user._id },
                     {
                         $inc: { postCount: 1 }
                     },
                 );
-    
+
                 return post;
             }
             throw AuthenticationError;
@@ -152,7 +153,7 @@ const resolvers = {
                 const post = await Post.findOneAndDelete({ _id });
 
                 await User.findByIdAndUpdate(
-                    { _id: context.user._id},
+                    { _id: context.user._id },
                     {
                         $inc: { postCount: -1 }
                     }
@@ -160,6 +161,39 @@ const resolvers = {
                 return post;
             };
             throw AuthenticationError;
+        },
+
+        likePost: async (parent, { _id }, context) => {
+            if (context.user) {
+                const userId = context.user._id;
+                const post = await Post.findByIdAndUpdate(
+                    { _id },
+                    {
+                        $push: { likes: userId }
+                    },
+                    {
+                        new: true,
+                        runValidators: true,
+                    });
+                return post;
+            }
+        },
+        
+        unLikePost: async (parent, { _id }, context) => {
+            if (context.user) {
+                const userId = context.user._id;
+                const post = await Post.findByIdAndUpdate(
+                    { _id },
+                    {
+                        $pull: { likes: userId }
+                    },
+                    {
+                        new: true,
+                        runValidators: true,
+                    }
+                    );
+                return post;
+            }
         }
     }
 };
