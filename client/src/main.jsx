@@ -7,7 +7,7 @@ import Splash from './pages/Splash';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Feed from './pages/Feed.jsx';
-import Profile from './pages/Profile.jsx';
+// import Profile from './pages/Profile.jsx';
 
 const router = createBrowserRouter([
     {
@@ -27,10 +27,10 @@ const router = createBrowserRouter([
                 path: '/signup',
                 element: <Register />
             },
-            {
-                path: '/user/:userId',
-                element: <Profile/>
-            },
+            // {
+            //     path: '/user/:userId',
+            //     element: <Profile/>
+            // },
             {
                 path: '/feed',
                 element: <Feed />
