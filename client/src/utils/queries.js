@@ -26,17 +26,11 @@ query PostsbyUser($userId: ID) {
   }
   `;
 
-// export const QUERY_USER = gql`
-//     query Query($id: ID) {
-//         user(_id: $id) {
-//             username
-//             postCount
-//             email
-//             description
-//             following
-//             followers
-//             _id
-//         }
-//     }
-  
-// `
+  export const QUERY_LIKE_POST = gql`
+  query Post($id: ID) {
+    post(_id: $id) {
+      _id
+      likes
+    }
+  }
+`;

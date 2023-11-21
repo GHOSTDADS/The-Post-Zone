@@ -35,7 +35,8 @@ const EditModal = (props) => {
             const mutationResponse = await editPost({
                 variables: { id: props.modalData, body: formState.value, },
             },
-                { returnNewDocument: true });
+            { returnNewDocument: true }
+            );
             setFormState({ value: '' });
             setOpen(!open);
         } catch (e) {

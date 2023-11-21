@@ -50,6 +50,7 @@ export const CREATE_POST = gql`
             createdAt
             userId
             username
+            likes
         }
     }
 `;
@@ -72,4 +73,22 @@ mutation RemovePost($id: ID!) {
       userId
     }
   }
+`;
+
+export const LIKE_POST = gql`
+mutation LikePost($id: ID!) {
+  likePost(_id: $id) {
+    _id
+    likes
+  }
+}
+`;
+
+export const UNLIKE_POST = gql`
+mutation UnLikePost($id: ID!) {
+  unLikePost(_id: $id) {
+    _id
+    likes
+  }
+}
 `;

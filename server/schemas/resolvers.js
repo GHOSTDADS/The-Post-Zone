@@ -18,7 +18,7 @@ const resolvers = {
             return await Post.find({}).sort({ createdAt: -1 });
         },
         post: async (parent, { _id }) => {
-            return await Post.findMany({ _id });
+            return await Post.findOne({ _id });
         },
         postsbyUser: async (parent, { userId }) => {
             return await Post.find({
