@@ -27,7 +27,7 @@ const Profile = () => {
         <div>
             {loading ? <div className="has-text-centered"> loading </div> :
                 <>
-                    <section className="hero is-info mb-3">
+                {userPosts ? <section className="hero is-info mb-3">
                         <div className="hero-body">
                             <p className="title">
                                 {userPosts[0].username}'s Profile page
@@ -36,7 +36,8 @@ const Profile = () => {
                                 Can you believe they've made {!userPosts.length ? <span>0 posts???</span> : <span>{userPosts.length} posts!</span>}
                             </p>
                         </div>
-                    </section>
+                    </section> : <div className="container is-fluid pb-7">no posts here</div> } 
+                    
                     {userId == loggedUserId ? <NewPost /> : <div></div>}
                     {loading ? <div></div> : <div className="container is-fluid pb-7"><Posts posts={userPosts} /></div> } 
                     {Auth.loggedIn() ? <div></div> : <Footer />}
