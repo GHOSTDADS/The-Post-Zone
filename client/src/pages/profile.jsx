@@ -27,19 +27,16 @@ const Profile = () => {
         <div>
             {loading ? <div className="has-text-centered"> loading </div> :
                 <>
-                {userPosts ? <section className="hero is-info mb-3">
+                    <section className="hero is-info mb-3">
                         <div className="hero-body">
-                            <p className="title">
-                                {userPosts[0].username}'s Profile page
-                            </p>
+                            {!userPosts.length ? <><p className="title"> Your Profile page</p></> : <p className="title"> {userPosts[0].username}'s Profile page</p>}
                             <p className="subtitle">
-                                Can you believe they've made {!userPosts.length ? <span>0 posts???</span> : <span>{userPosts.length} posts!</span>}
+                                Can you believe {!userPosts.length ? <span>you've made no posts yet!</span> : <span>they've made {userPosts.length} posts!</span>}
                             </p>
                         </div>
-                    </section> : <div className="container is-fluid pb-7">no posts here</div> } 
-                    
+                    </section>
                     {userId == loggedUserId ? <NewPost /> : <div></div>}
-                    {loading ? <div></div> : <div className="container is-fluid pb-7"><Posts posts={userPosts} /></div> } 
+                    {loading ? <div></div> : <>{!userPosts ? <></> : <div className="container is-fluid pb-7"><Posts posts={userPosts} /></div> }</> } 
                     {Auth.loggedIn() ? <div></div> : <Footer />}
                 </>}
         </div>
