@@ -52,7 +52,7 @@ function SignUpModal() {
         <>
         <div className={`modal ${active}`}>
         <div className="modal-background"></div>
-        <div className="modal-content column is-three-quarters"></div>
+        <div className="modal-content column is-three-quarters">
             <form className="box mt-5" onSubmit={handleFormSubmit}>
                <button type="button" className="delete" onClick={handleModalClick} aria-label="close"></button>
                 <div id='signupTitle' className='title is-1 has-text-centered modal-card-title mobileView'> Sign up Here!</div>
@@ -81,6 +81,7 @@ function SignUpModal() {
                     </div>
                 </div>
             </form>
+            </div>
         </div>
 
 <button className='button is-primary' onClick={handleModalClick} >Sign In</button>
